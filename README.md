@@ -1,12 +1,42 @@
-# React + Vite
+# Bot Battlr
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bot Battlr is a web application that allows users to browse a collection of robots (bots), build an army by enlisting bots, release bots from their army, and discharge bots forever by deleting them. The application uses React for the frontend and json-server as the backend to fetch and manage bot data.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- View a list of all available bots in the **BotCollection**.
+- Enlist bots to your **YourBotArmy** by clicking on them.
+- Release bots from your army by clicking on them in the **YourBotArmy** component.
+- Discharge bots permanently by clicking the red "x" button, which deletes the bot both from the frontend and backend.
+- Fetch data from a local JSON server.
 
-## Expanding the ESLint configuration
+## Installation
+git clone https://git@github.com:Biss1996/Bot-Battlr.git
+## Usage
+Once the app is running, you can perform the following actions:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Browse all bots: Click on the "All Bots" link in the navbar to view the list of bots.
+
+Enlist a bot: Click on a bot in the BotCollection to add it to your YourBotArmy.
+
+Release a bot: Click on a bot in YourBotArmy to remove it from your army.
+
+Discharge a bot: Click on the red "x" button next to a bot in YourBotArmy to delete it permanently from the backend and frontend.
+## Technologies Used
+React: For building the user interface and managing the app's state.
+
+json-server: A simple REST API server to simulate backend functionality.
+
+TailwindCSS: For styling and responsive design.
+
+React Router: For client-side routing to handle different views (BotCollection, YourBotArmy, etc.).
+
+## License
+This project is licensed under the MIT License - 
+
+### Key Points to Adjust:
+1. **GitHub Link:** https://git@github.com:Biss1996/Bot-Battlr.git
+2. **Instructions for Starting the Backend:** This README assumes you are using `json-server` to simulate the backend. If there are any other setup steps or configurations, feel free to add them.
+
+## Author
+Bismark Bett
