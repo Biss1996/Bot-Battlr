@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import BotCollection from "./components/BotCollection";
 import YourBotArmy from "./components/YourBotArmy";
-import "./App.css";
+import Home from "./components/Home";
 
 function App() {
   const [bots, setBots] = useState([]);
@@ -13,21 +15,47 @@ function App() {
       .then((data) => setBots(data));
   }, []);
 
-  const enlistBot = (bot) => {
+  function enlistBot(bot) {
     if (!army.find((b) => b.id === bot.id)) {
       setArmy([...army, bot]);
     }
-  };
+  }
 
-  const releaseBot = (id) => {
-    setArmy(army.filter((bot) => bot.id !== id));
-  };
+  function releaseBot(bot) {
+    setArmy(army.filter((b) => b.id !== bot.id));
+  }
+
+  function dischargeBot(bot) {
+    fetch(`http://localhost:3000/bots/${bot.id}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        setArmy(army.filter((b) => b.id !== bot.id));
+        setBots(bots.filter((b) => b.id !== bot.id));
+      });
+  }
 
   return (
-    <div className="p-4">
-      <YourBotArmy army={army} onRelease={releaseBot} />
-      <BotCollection bots={bots} onEnlist={enlistBot} />
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/bots"
+          element={<BotCollection bots={bots} enlistBot={enlistBot} />}
+        />
+        <Route
+          path="/army"
+          element={
+            <YourBotArmy
+              army={army}
+              releaseBot={releaseBot}
+              dischargeBot={dischargeBot}
+            />
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 

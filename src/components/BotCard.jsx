@@ -1,24 +1,39 @@
-function BotCard({ bot, onClick, showRemove, onRemove }) {
-    return (
-      <div onClick={onClick} className="cursor-pointer bg-gray-100 p-2 rounded shadow">
-        <img src={bot.avatar_url} alt={bot.name} className="w-full" />
-        <h3>{bot.name}</h3>
+import { Link } from "react-router-dom";
+
+function BotCard({ bot, onClick, showRemove = false, onRemove }) {
+  return (
+    <div className="relative bg-white p-4 rounded shadow">
+      <Link to={`/bots/${bot.id}`}>
+        <img
+          src={bot.avatar_url}
+          alt={bot.name}
+          className="w-full h-48 object-cover rounded"
+        />
+        <h3 className="font-bold mt-2">{bot.name}</h3>
         <p>{bot.bot_class}</p>
-        <p>{bot.catchphrase}</p>
-        {showRemove && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onRemove(bot.id);
-            }}
-            className="text-red-500"
-          >
-            x
-          </button>
-        )}
-      </div>
-    );
-  }
-  
-  export default BotCard;
-  
+        <p className="text-xs italic">{bot.catchphrase}</p>
+      </Link>
+      {onClick && (
+        <button
+          onClick={onClick}
+          className="mt-2 bg-green-500 text-white px-2 py-1 rounded"
+        >
+          Enlist
+        </button>
+      )}
+      {showRemove && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemove(bot.id);
+          }}
+          className="absolute top-2 right-2 bg-red-500 text-white px-2 rounded"
+        >
+          x
+        </button>
+      )}
+    </div>
+  );
+}
+
+export default BotCard;
