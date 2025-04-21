@@ -11,6 +11,7 @@ Bot Battlr is a web application that allows users to browse a collection of robo
 - Fetch data from a local JSON server.
 
 ## Installation
+app can be accessed live on https://bot-battlr-lyart.vercel.app/army
 git clone https://git@github.com:Biss1996/Bot-Battlr.git
 ## Usage
 Once the app is running, you can perform the following actions:
